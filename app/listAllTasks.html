@@ -1,0 +1,33 @@
+<h4>Task List:</h4>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Deadline</th>
+			<th>Responsible</th>
+			<th>Est Hours</th>
+			<th>Responsible</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in homeWork.items">
+			<form>
+				<td>{{cutOffDate(item.deadline)}}</td>
+				<td>{{item.deadlineResponsible}}</td>
+				<td>{{item.estHours}}</td>
+				<td>{{item.estResponsible}}</td>
+				<td>{{statusView(item.status)}}
+					<button ng-hide="!item.status" ng-click="performTask(item)">Perform</button>
+				</td>
+				<td><button class="btn btn-default"
+						ng-click="deleteTask(homeWork.items, item)">Delete</button></td>
+			</form>
+		</tr>
+	</tbody>
+</table>
+<div>
+	<button class="btn btn-default"
+		ng-hide="homeWork.items.length === 0 || closedTaskCount(homeWork.items) === 0"
+		ng-click="deleteAllClosedTasks(homeWork.items)">Delete All Closed Tasks</button>
+</div>
