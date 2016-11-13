@@ -15,48 +15,33 @@
 
 	.directive("formCreateTask", formCreateTask)
 
-	.directive("listAllTasks", listAllTasks);
+	.directive("listAllTasks", listAllTasks)
 
-	function runApp($http, model){
-		$http
-			.get("listHomeTask.json")
-			.success(function(data){
-				model.items = data;
-			});
+	.factory("todoService", todoService)
+
+	function HomeWork(model, todoService) {
+		let $ctrl = this;
+		$ctrl.homeWork = model;
+		Object.assign($ctrl, todoService);
 	}
 
-	function headerPage(){
+	function todoService() {
+		
 		return {
-			restrict: "A",
-			templateUrl: "header.html"
+			statusView, createTask, cutOffDate, deleteTask, 
+			deleteAllClosedTasks, performTask, closedTaskCount,
+			verifyNewItem, editTask
+		};
+
+		function editTask(items, item, editedItem) {
+			editedItem = item;
+			deleteTask(items, item);
 		}
-	}
 
-	function formCreateTask(){
-		return {
-			restrict: "A",
-			templateUrl: "formCreateTask.html"
-		};
-	}
-
-	function listAllTasks(){
-		return {
-			restrict: "E",
-			templateUrl: "listAllTasks.html"
-		};
-	}
-
-	function HomeWork($scope, model){
-		$scope.homeWork = model;
-		$scope.statusView = statusView;
-		$scope.createTask = createTask;
-		$scope.cutOffDate = cutOffDate;
-		$scope.deleteTask = deleteTask;
-		$scope.deleteAllClosedTasks = deleteAllClosedTasks;
-		$scope.performTask = performTask;
-		$scope.closedTaskCount = closedTaskCount;
-		$scope.compareDate = compareDate;
-		console.log(model);
+		function verifyNewItem(item) {
+			return (!item || !item.deadline || !item.deadlineResponsible 
+				|| !item.estHours || !item.estResponsible);
+		}
 
 		function statusView(status){
 			var statusOpen = "Open";
@@ -73,16 +58,17 @@
 			if(newItem && newItem.deadline && newItem.deadlineResponsible 
 				&& newItem.estHours && newItem.estResponsible){
 				items.push({
-					deadline: newItem.deadline,
-					deadlineResponsible: newItem.deadlineResponsible,
-					estHours: newItem.estHours,
-					estResponsible: newItem.estResponsible,
-					status: true
+					"deadline": newItem.deadline,
+					"deadlineResponsible": newItem.deadlineResponsible,
+					"estHours": newItem.estHours,
+					"estResponsible": newItem.estResponsible,
+					"status": true
 				});
-			newItem.deadline = "";
-			newItem.deadlineResponsible = "";
-			newItem.estHours = "";
-			newItem.estResponsible = "";
+
+				newItem.deadline = "";
+				newItem.deadlineResponsible = "";
+				newItem.estHours = "";
+				newItem.estResponsible = "";
 			}
 		}
 
@@ -121,18 +107,37 @@
 			});
 			return closedTask;
 		}
+	}
 
-		function compareDate(deadline){
-			var currentDate = moment().toDate();
-			var cD = moment(currentDate, 'MM-DD-YYYY').format('MM-DD-YYYY');
-			var dD = moment(deadline, 'MM-DD-YYYY').format('MM-DD-YYYY');
-			if(cD > dD){
-				return false;
-			}
-			else {
-				return true;
-			}
+	function runApp($http, model){
+		$http
+			.get("listHomeTask.json")
+			.then(response => model.items = response.data);
+	}
+
+	function headerPage(){
+		return {
+			restrict: "A",
+			templateUrl: "header.html"
 		}
 	}
+
+	function formCreateTask(){
+		return {
+			restrict: "A",
+			templateUrl: "formCreateTask.html"
+		};
+	}
+
+	function listAllTasks(){
+		return {
+			restrict: "E",
+			templateUrl: "listAllTasks.html"
+		};
+	}
+
+	angular.element(document).ready(function() {
+	angular.bootstrap(document, ["todoApp"]);
+	});
 	
 })();

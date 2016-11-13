@@ -11,23 +11,24 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="item in homeWork.items">
+		<tr ng-repeat="item in $ctrl.homeWork.items | orderBy: 'deadline'">
 			<form>
-				<td>{{cutOffDate(item.deadline)}}</td>
+				<td>{{$ctrl.cutOffDate(item.deadline)}}</td>
 				<td>{{item.deadlineResponsible}}</td>
 				<td>{{item.estHours}}</td>
 				<td>{{item.estResponsible}}</td>
-				<td>{{statusView(item.status)}}
-					<button ng-hide="!item.status" ng-click="performTask(item)">Perform</button>
+				<td>{{$ctrl.statusView(item.status)}}
+					<button ng-hide="!item.status" ng-click="$ctrl.performTask(item)">Perform</button>
+					<button ng-hide="!item.status" ng-click="$ctrl.editTask($ctrl.homeWork.items, item, $ctrl.editedItem)">Edit</button>
 				</td>
 				<td><button class="btn btn-default"
-						ng-click="deleteTask(homeWork.items, item)">Delete</button></td>
+						ng-click="$ctrl.deleteTask($ctrl.homeWork.items, item)">Delete</button></td>
 			</form>
 		</tr>
 	</tbody>
 </table>
 <div>
 	<button class="btn btn-default"
-		ng-hide="homeWork.items.length === 0 || closedTaskCount(homeWork.items) === 0"
-		ng-click="deleteAllClosedTasks(homeWork.items)">Delete All Closed Tasks</button>
+		ng-hide="$ctrl.homeWork.items.length === 0 || $ctrl.closedTaskCount($ctrl.homeWork.items) === 0"
+		ng-click="$ctrl.deleteAllClosedTasks($ctrl.homeWork.items)">Delete All Closed Tasks</button>
 </div>
