@@ -1,4 +1,5 @@
-<h4>Task List:</h4>
+<div ng-controller="Table as $ctrl">
+	<h4>Task List:</h4>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -19,7 +20,6 @@
 				<td>{{item.estResponsible}}</td>
 				<td>{{$ctrl.statusView(item.status)}}
 					<button ng-hide="!item.status" ng-click="$ctrl.performTask(item)">Perform</button>
-					<button ng-hide="!item.status" ng-click="$ctrl.editTask($ctrl.allTasks.items, item, $ctrl.editedItem)">Edit</button>
 				</td>
 				<td><button class="btn btn-default"
 						ng-click="$ctrl.deleteTask($ctrl.allTasks.items, item)">Delete</button></td>
@@ -27,7 +27,6 @@
 		</tr>
 	</tbody>
 </table>
-<div>
 	<button class="btn btn-default"
 		ng-hide="$ctrl.allTasks.items.length === 0 || $ctrl.closedTaskCount($ctrl.allTasks.items) === 0"
 		ng-click="$ctrl.deleteAllClosedTasks($ctrl.allTasks.items)">Delete All Closed Tasks</button>

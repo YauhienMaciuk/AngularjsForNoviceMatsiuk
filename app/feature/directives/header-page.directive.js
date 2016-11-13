@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	angular.module("feature")
+	angular.module("featureDirectives")
 		.directive("headerPage", headerPage);
 
 	function headerPage(){

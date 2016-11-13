@@ -3,7 +3,7 @@
 		<div class="form-group">
 			<label for="action">Create New Task</label>
 			<div class="input-group">
-				<table>
+				<table ng-controller="FormTask as $ctrl">
 					<tr>
 						<td>Deadline</td>
 					</tr>
@@ -36,7 +36,7 @@
 						<td><span class="input-group-btn">
 								<button class="btn btn-default" 
 									ng-disabled="$ctrl.verifyNewItem(newItem)"
-									ng-click="$ctrl.createTask($ctrl.allTasks, newItem)">Create</button>
+									ng-click="$ctrl.createTask($ctrl.allTasks.items, newItem)">Create</button>
 						</span></td>
 					</tr>
 				</table>

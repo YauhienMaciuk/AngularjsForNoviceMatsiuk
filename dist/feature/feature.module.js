@@ -1,5 +1,9 @@
 (function(){
 	"use strict";
-	angular.module("feature", []);
+	angular.module("feature", [
+		"featureControllers",
+		"featureDirectives",
+		"featureServices"
+		]);
 	
 })();

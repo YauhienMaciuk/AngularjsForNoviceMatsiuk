@@ -2,20 +2,15 @@
 
 	angular.module("feature")
 		.run(getAllTasks)
-		.service("taskService", taskService);
+		.service("taskTableSrv", taskTableSrv);
 
-	function taskService() {
+	function taskTableSrv() {
 		
 		return {
-			statusView, createTask, cutOffDate, deleteTask, 
+			statusView, cutOffDate, deleteTask, 
 			deleteAllClosedTasks, performTask, closedTaskCount,
-			verifyNewItem, editTask
+			verifyNewItem
 		};
-
-		function editTask(items, item, editedItem) {
-			editedItem = item;
-			deleteTask(items, item);
-		}
 
 		function verifyNewItem(item) {
 			return (!item || !item.deadline || !item.deadlineResponsible 
@@ -30,24 +25,6 @@
 			}
 			else{
 				return statusClose;
-			}
-		}
-
-		function createTask(items, newItem){
-			if(newItem && newItem.deadline && newItem.deadlineResponsible 
-				&& newItem.estHours && newItem.estResponsible){
-				items.push({
-					"deadline": newItem.deadline,
-					"deadlineResponsible": newItem.deadlineResponsible,
-					"estHours": newItem.estHours,
-					"estResponsible": newItem.estResponsible,
-					"status": true
-				});
-
-				newItem.deadline = "";
-				newItem.deadlineResponsible = "";
-				newItem.estHours = "";
-				newItem.estResponsible = "";
 			}
 		}
 

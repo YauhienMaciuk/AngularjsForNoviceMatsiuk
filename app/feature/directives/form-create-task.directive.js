@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	angular.module("feature")
+	angular.module("featureDirectives")
 		.directive("formCreateTask", formCreateTask);
 
 	function formCreateTask(){
