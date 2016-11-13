@@ -67,7 +67,7 @@
 
 	function getAllTasks($http, allTasks) {
 		$http
-			.get("feature/listHomeTask.json")
+			.get("json/listHomeTask.json")
 			.then(response => allTasks.items = response.data);		
 	}
 })();
