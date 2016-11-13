@@ -1,0 +1,34 @@
+<h4>Task List:</h4>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Deadline</th>
+			<th>Responsible</th>
+			<th>Est Hours</th>
+			<th>Responsible</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in $ctrl.allTasks.items | orderBy: 'deadline'">
+			<form>
+				<td>{{$ctrl.cutOffDate(item.deadline)}}</td>
+				<td>{{item.deadlineResponsible}}</td>
+				<td>{{item.estHours}}</td>
+				<td>{{item.estResponsible}}</td>
+				<td>{{$ctrl.statusView(item.status)}}
+					<button ng-hide="!item.status" ng-click="$ctrl.performTask(item)">Perform</button>
+					<button ng-hide="!item.status" ng-click="$ctrl.editTask($ctrl.allTasks.items, item, $ctrl.editedItem)">Edit</button>
+				</td>
+				<td><button class="btn btn-default"
+						ng-click="$ctrl.deleteTask($ctrl.allTasks.items, item)">Delete</button></td>
+			</form>
+		</tr>
+	</tbody>
+</table>
+<div>
+	<button class="btn btn-default"
+		ng-hide="$ctrl.allTasks.items.length === 0 || $ctrl.closedTaskCount($ctrl.allTasks.items) === 0"
+		ng-click="$ctrl.deleteAllClosedTasks($ctrl.allTasks.items)">Delete All Closed Tasks</button>
+</div>

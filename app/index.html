@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-controller="HomeWork as $ctrl">
+<html ng-controller="Task as $ctrl">
 <head>
 <meta charset="utf-8">
 <title>Home work. AngularJS</title>
@@ -12,9 +12,22 @@
 	<div class="container">
 		<div header-page></div>
 		<div form-create-task></div>
-		<list-all-tasks></list-all-tasks>
+		<all-tasks></all-tasks>
 	</div>
 	<script src="vendor/angular/angular.min.js"></script>
 	<script src="app.js"></script>
+
+	<script src="common/filters/common-filters.module.js"></script>
+	<script src="common/services/common-services.module.js"></script>
+	<script src="common/services/all-tasks.service.js"></script>
+	<script src="common/services/user-info.services.js"></script>
+	<script src="common/common.module.js"></script>
+
+	<script src="feature/feature.module.js"></script>
+	<script src="feature/task.controller.js"></script>
+	<script src="feature/task.service.js"></script>
+	<script src="feature/form-create-task.directive.js"></script>
+	<script src="feature/header-page.directive.js"></script>
+	<script src="feature/list-all-tasks.directive.js"></script>
 </body>
 </html>
