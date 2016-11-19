@@ -4,7 +4,7 @@
 		.service("taskTableSrv", taskTableSrv);
 
 	function taskTableSrv() {
-		 // cutOffDate,
+
 		return {
 			statusView, deleteTask, 
 			deleteAllClosedTasks, performTask, closedTaskCount,
@@ -31,15 +31,6 @@
 				return statusClose;
 			}
 		}
-
-		// function cutOffDate(deadline){
-		// 	if(deadline.length < 11){
-		// 		return deadline;
-		// 	}
-		// 	else {
-		// 		return moment(deadline, 'MM-DD-YYYY').format('MM-DD-YYYY');
-		// 	}
-		// }
 
 		function deleteTask(items, item){
 			var index = items.indexOf(item);

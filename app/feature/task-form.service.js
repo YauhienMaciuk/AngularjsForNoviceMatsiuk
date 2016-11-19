@@ -6,12 +6,13 @@
 
 		function taskFormSrv() {
 			return {
-				 createTask
+				createTask
 			}
 
+
 		function createTask(items, newItem, $localStorage){
-			if(newItem && newItem.deadline && newItem.deadlineResponsible 
-				&& newItem.estHours && newItem.estResponsible){
+			if (newItem && newItem.deadline && newItem.deadlineResponsible 
+				&& newItem.estHours && newItem.estResponsible) {
 				items.push({
 					"deadline": moment(newItem.deadline, 'MM-DD-YYYY').format('MM-DD-YYYY'),
 					"deadlineResponsible": newItem.deadlineResponsible,
