@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	angular.module("featureServices")
+	angular.module("feature")
 		.service("taskFormSrv", taskFormSrv);
 
 		function taskFormSrv() {
@@ -9,16 +9,17 @@
 				 createTask
 			}
 
-		function createTask(items, newItem){
+		function createTask(items, newItem, $localStorage){
 			if(newItem && newItem.deadline && newItem.deadlineResponsible 
 				&& newItem.estHours && newItem.estResponsible){
 				items.push({
-					"deadline": newItem.deadline,
+					"deadline": moment(newItem.deadline, 'MM-DD-YYYY').format('MM-DD-YYYY'),
 					"deadlineResponsible": newItem.deadlineResponsible,
 					"estHours": newItem.estHours,
 					"estResponsible": newItem.estResponsible,
 					"status": true
 				});
+				window.localStorage['items'] = angular.toJson(items);
 
 				newItem.deadline = "";
 				newItem.deadlineResponsible = "";

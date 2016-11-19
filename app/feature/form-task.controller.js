@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	angular.module("featureControllers")
+	angular.module("feature")
 		.controller("FormTask", FormTask);
 
 		function FormTask(taskFormSrv, allTasks) {

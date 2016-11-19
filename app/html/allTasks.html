@@ -14,12 +14,12 @@
 	<tbody>
 		<tr ng-repeat="item in $ctrl.allTasks.items | orderBy: 'deadline'">
 			<form>
-				<td>{{$ctrl.cutOffDate(item.deadline)}}</td>
+				<td>{{item.deadline}}</td>
 				<td>{{item.deadlineResponsible}}</td>
 				<td>{{item.estHours}}</td>
 				<td>{{item.estResponsible}}</td>
 				<td>{{$ctrl.statusView(item.status)}}
-					<button ng-hide="!item.status" ng-click="$ctrl.performTask(item)">Perform</button>
+					<button ng-hide="!item.status" ng-click="$ctrl.performTask($ctrl.allTasks.items, item)">Perform</button>
 				</td>
 				<td><button class="btn btn-default"
 						ng-click="$ctrl.deleteTask($ctrl.allTasks.items, item)">Delete</button></td>

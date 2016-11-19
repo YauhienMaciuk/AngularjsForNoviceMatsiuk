@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	angular.module("featureDirectives")
+	angular.module("feature")
 		.directive("allTasks", allTasks);
 
 		function allTasks() {

@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	angular.module("featureControllers")
+	angular.module("feature")
 		.controller("Header", Header);
 
 		function Header(userInfo) {
