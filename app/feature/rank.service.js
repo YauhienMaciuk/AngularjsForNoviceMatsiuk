@@ -2,7 +2,7 @@
     "use strict";
 
     angular.module("feature")
-        .service("rankSrv", rankSrv);
+        .factory("rankSrv", rankSrv);
 
     function rankSrv() {
         return {
@@ -14,22 +14,22 @@
             if (angular.isNumber(rankNumber)) {
                 switch (true) {
                     case (0 <= rankNumber && rankNumber < 101):
-                        star = "*";
+                        star = $ctrl.oneStar;
                         break;
                     case (100 < rankNumber && rankNumber < 201):
-                        star = "**";
+                        star = $ctrl.twoStar;
                         break;
                     case (200 < rankNumber && rankNumber < 501):
-                        star = "***";
+                        star = $ctrl.threeStar;
                         break;
                     case (500 < rankNumber && rankNumber < 1001):
-                        star = "****";
+                        star = $ctrl.fourStar;
                         break;
                     case (1000 < rankNumber):
-                        star = "*****";
+                        star = $ctrl.fiveStar;
                         break;
                     default:
-                        star = "undefined";
+                        star = $ctrl.undefined;
                         break;
 
                 }
