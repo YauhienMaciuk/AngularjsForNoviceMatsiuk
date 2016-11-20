@@ -1,4 +1,4 @@
 (function() {
-	angular.module("commonServices")
-		.constant("appName", "todoHome");
+    angular.module("commonServices")
+        .constant("appName", "todoHome");
 })();

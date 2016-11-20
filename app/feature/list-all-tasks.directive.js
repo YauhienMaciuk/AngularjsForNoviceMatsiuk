@@ -1,14 +1,14 @@
 (function() {
-	"use strict";
+    "use strict";
 
-	angular.module("feature")
-		.directive("allTasks", allTasks);
+    angular.module("feature")
+        .directive("allTasks", allTasks);
 
-		function allTasks() {
-		return {
-			restrict: "E",
-			templateUrl: "html/allTasks.html"
-		};
-		}
+    function allTasks() {
+        return {
+            restrict: "E",
+            templateUrl: "html/all-tasks.html"
+        };
+    }
 
 })();

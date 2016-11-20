@@ -1,6 +1,6 @@
 (function() {
 
-	angular.module("commonServices")
-		.value("allTasks", {});
+    angular.module("commonServices")
+        .value("allTasks", {});
 
 })();

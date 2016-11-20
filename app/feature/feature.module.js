@@ -1,5 +1,5 @@
-(function(){
-	"use strict";
-	angular.module("feature", ["ngStorage"]);
-	
+(function() {
+    "use strict";
+    angular.module("feature", ["ngStorage"]);
+
 })();

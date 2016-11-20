@@ -1,5 +1,5 @@
-(function(){
-	"use strict";
-	angular.module("commonServices", []);
-	
+(function() {
+    "use strict";
+    angular.module("commonServices", []);
+
 })();

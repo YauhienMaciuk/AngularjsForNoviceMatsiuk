@@ -1,9 +1,9 @@
 (function() {
 
-	angular.module("commonServices")
-		.value("userInfo", {
-			name: "Yauheni",
-			photo: "images/Yauheni.png"
-		});
+    angular.module("commonServices")
+        .value("userInfo", {
+            name: "Yauheni",
+            photo: "images/Yauheni.png"
+        });
 
 })();

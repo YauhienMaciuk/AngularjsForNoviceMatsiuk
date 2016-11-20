@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Home work. AngularJS</title>
-<link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<script src="vendor/moment/moment.js"></script>
+    <meta charset="utf-8">
+    <title>Home work. AngularJS</title>
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="vendor/moment/moment.js"></script>
 </head>
+
 <body ng-cloak>
-	<div class="container">
-		<div header-page></div>
-		<div form-create-task></div>
-		<all-tasks></all-tasks>
-	</div>
-	<script src="vendor/angular/angular.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
-	<script src="feature/decorator.js"></script>
-	<script src="app.js"></script>
-	<!-- // <script src="datepicker.js"></script> -->
-
-	<script src="common/filters/common-filters.module.js"></script>
-	<script src="common/services/common-services.module.js"></script>
-	<script src="common/services/all-tasks.service.js"></script>
-	<script src="common/services/user-info.service.js"></script>
-	<script src="common/services/app-name.service.js"></script>
-	<script src="common/common.module.js"></script>
-
-	<script src="feature/feature.module.js"></script>
-	<script src="feature/table.controller.js"></script>
-	<script src="feature/form-task.controller.js"></script>
-	<script src="feature/header.controller.js"></script>
-	<script src="feature/form-create-task.directive.js"></script>
-	<script src="feature/header-page.directive.js"></script>
-	<script src="feature/list-all-tasks.directive.js"></script>
-	<script src="feature/task-table.service.js"></script>
-	<script src="feature/task-form.service.js"></script>
-
-
+    <div class="container">
+        <div header-page></div>
+        <random-generate-page></random-generate-page>
+        <div form-create-task></div>
+        <all-tasks></all-tasks>
+    </div>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <script src="feature/decorator.js"></script>
+    <script src="app.js"></script>
+    <script src="common/filters/common-filters.module.js"></script>
+    <script src="common/services/common-services.module.js"></script>
+    <script src="common/services/all-tasks.service.js"></script>
+    <script src="common/services/user-info.service.js"></script>
+    <script src="common/services/app-name.service.js"></script>
+    <script src="common/services/symbols.service.js"></script>
+    <script src="common/common.module.js"></script>
+    <script src="feature/feature.module.js"></script>
+    <script src="feature/table.controller.js"></script>
+    <script src="feature/form-task.controller.js"></script>
+    <script src="feature/header.controller.js"></script>
+    <script src="feature/random-generate.controller.js"></script>
+    <script src="feature/form-create-task.directive.js"></script>
+    <script src="feature/header-page.directive.js"></script>
+    <script src="feature/list-all-tasks.directive.js"></script>
+    <script src="feature/random-generate.directive.js"></script>
+    <script src="feature/task-table.service.js"></script>
+    <script src="feature/task-form.service.js"></script>
+    <script src="feature/random-generate.service.js"></script>
 </body>
+
 </html>
