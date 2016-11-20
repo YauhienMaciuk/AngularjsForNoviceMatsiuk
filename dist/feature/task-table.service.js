@@ -1,74 +1,68 @@
-(function(){
+(function() {
 
-	getAllTasks.$inject = ["$http", "allTasks"];
-	angular.module("feature")
-		.run(getAllTasks)
-		.service("taskTableSrv", taskTableSrv);
+    angular.module("feature")
+        .service("taskTableSrv", taskTableSrv);
 
-	function taskTableSrv() {
-		
-		return {
-			statusView, cutOffDate, deleteTask, 
-			deleteAllClosedTasks, performTask, closedTaskCount,
-			verifyNewItem
-		};
+    function taskTableSrv() {
 
-		function verifyNewItem(item) {
-			return (!item || !item.deadline || !item.deadlineResponsible 
-				|| !item.estHours || !item.estResponsible);
-		}
+        return {
+            statusView,
+            deleteTask,
+            deleteAllClosedTasks,
+            performTask,
+            closedTaskCount,
+            verifyNewItem,
+            editTask
+        };
 
-		function statusView(status){
-			var statusOpen = "Open";
-			var statusClose = "Close";
-			if(status){
-				return statusOpen;
-			}
-			else{
-				return statusClose;
-			}
-		}
+        function editTask(items, item, editedItem) {
+            editedItem = item;
+            deleteTask(items, item);
+        }
 
-		function cutOffDate(deadline){
-			if(deadline.length < 11){
-				return deadline;
-			}
-			else {
-				return moment(deadline, 'MM-DD-YYYY').format('MM-DD-YYYY');
-			}
-		}
+        function verifyNewItem(item) {
+            return (!item || !item.deadline || !item.deadlineResponsible || !item.estHours || !item.estResponsible);
+        }
 
-		function deleteTask(items, item){
-			var index = items.indexOf(item);
-			items.splice(index, 1);
-		}
+        function statusView(status) {
+            var statusOpen = "Open";
+            var statusClose = "Close";
+            if (status) {
+                return statusOpen;
+            } else {
+                return statusClose;
+            }
+        }
 
-		function deleteAllClosedTasks(items){
-			angular.forEach(items, function(item){
-				if(item.status === false){
-					deleteTask(items, item);
-				}
-			});
-		}
+        function deleteTask(items, item) {
+            var index = items.indexOf(item);
+            items.splice(index, 1);
+            window.localStorage['items'] = angular.toJson(items);
+        }
 
-		function performTask(item){
-			item.status = false;
-		}
+        function deleteAllClosedTasks(items) {
+            angular.forEach(items, function(item) {
+                if (item.status === false) {
+                    deleteTask(items, item);
+                }
+            });
+        }
 
-		function closedTaskCount(items){
-			var closedTask = 0;
-			angular.forEach(items, function(item){
-				if(item.status === false){
-					closedTask++;
-				}
-			});
-			return closedTask;
-		}
-	}
+        function performTask(items, item) {
+            var index = items.indexOf(item);
+            item.status = false;
+            items.splice(index, 1, item);
+            window.localStorage['items'] = angular.toJson(items);
+        }
 
-	function getAllTasks($http, allTasks) {
-		$http
-			.get("feature/listHomeTask.json")
-			.then(response => allTasks.items = response.data);		
-	}
+        function closedTaskCount(items) {
+            var closedTask = 0;
+            angular.forEach(items, function(item) {
+                if (item.status === false) {
+                    closedTask++;
+                }
+            });
+            return closedTask;
+        }
+    }
 })();

@@ -1,6 +1,4 @@
 (function() {
-
     angular.module("commonServices")
-        .value("allTasks", {});
-
+        .constant("defaultStarMsg", "Stars: ");
 })();

@@ -1,14 +1,14 @@
 (function() {
-	"use strict";
+    "use strict";
 
-	angular.module("feature")
-		.directive("formCreateTask", formCreateTask);
+    angular.module("feature")
+        .directive("formCreateTask", formCreateTask);
 
-	function formCreateTask(){
-		return {
-			restrict: "A",
-			templateUrl: "html/formCreateTask.html"
-		};
-	}
+    function formCreateTask() {
+        return {
+            restrict: "A",
+            templateUrl: "html/form-create-task.html"
+        };
+    }
 
 })();

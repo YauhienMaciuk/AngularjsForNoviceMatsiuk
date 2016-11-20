@@ -2,13 +2,12 @@
     "use strict";
 
     angular.module("feature")
-        .directive("headerPage", headerPage);
+        .directive("timePage", timePage);
 
-    function headerPage() {
+    function timePage() {
         return {
             restrict: "A",
-            templateUrl: "html/header.html"
+            templateUrl: "html/time.html"
         };
     }
-
 })();

@@ -1,12 +1,24 @@
-(function(){
-	"use strict";
-	angular.module("app", [
-		"common",
-		"feature"
-		]);
+(function() {
+    "use strict";
+    appConfig.$inject = ["rankSrvProvider", "longStarMsg"];
+    angular.module("app", [
+        "common",
+        "feature"
+    ])
 
-	angular.element(document).ready(function() {
-	angular.bootstrap(document, ["app"]);
-	});
-	
+    	.config(appConfig)
+        .decorator("taskFormSrv", taskCreateLog)
+        .decorator("taskTableSrv", taskPerformLog)
+        .decorator("taskTableSrv", taskDeleteLog)
+        .decorator("taskTableSrv", dateleAllClosedTasksLog)
+        .decorator("taskTableSrv", myLog);
+
+    function appConfig(rankSrvProvider, longStarMsg) {
+        rankSrvProvider.configRank(longStarMsg);
+    }
+
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ["app"]);
+    });
+
 })();

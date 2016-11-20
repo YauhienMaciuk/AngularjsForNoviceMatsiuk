@@ -2,13 +2,12 @@
     "use strict";
 
     angular.module("feature")
-        .directive("allTasks", allTasks);
+        .directive("rankPage", rankPage);
 
-    function allTasks() {
+    function rankPage() {
         return {
             restrict: "E",
-            templateUrl: "html/all-tasks.html"
+            templateUrl: "html/rank.html"
         };
     }
-
 })();
